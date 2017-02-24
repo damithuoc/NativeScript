@@ -397,6 +397,7 @@ export class View extends ViewCommon {
             this.nativeView.backgroundColor = value;
         } else {
             this.nativeView.backgroundColor = ios.createBackgroundUIColor(this);
+            this.nativeView.clipsToBounds = !value.hasUniformBorder() || value.getUniformBorderRadius() > 0;
         }
         if (!updateSuspended) {
             CATransaction.commit();
